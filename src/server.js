@@ -147,16 +147,6 @@ app.get('/api/notas', async (req,res) => {
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
 
-// ==========================================
-// 🔹 Catch-all seguro -> index.html
-// ==========================================
-app.use((req, res, next) => {
-  if (!req.path.startsWith('/api')) {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-  } else {
-    next();
-  }
-});
 
 // ==========================================
 // 🚀 INICIO SERVIDOR
@@ -165,3 +155,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Servidor activo en puerto ${PORT}`);
 });
+
